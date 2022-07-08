@@ -196,7 +196,7 @@ app.put('/api/article/:title', auth, async (req, res) => {
 
 //删除文章
 app.delete('/api/article/:title', auth, async (req, res) => {
-    Article.findOneAndDelete({title: req.params.title});
+    await Article.findOneAndDelete({title: req.params.title});
     deleteEmptyCategory();
     res.status(200).send({message: "删除成功"});
 });
