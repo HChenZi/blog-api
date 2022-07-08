@@ -17,7 +17,7 @@ app.post("/api/init", async (req, res) => {
         return res.status(400).send({message: "已经初始化过了"});
     }
     const user = new User({
-        username: req.body.username, password: bcrypt.hashSync(req.body.password, 10),
+        username: req.body.username, password: req.body.password,
     });
 
     await user.save();
